@@ -6,6 +6,7 @@ public class UserInstance : MonoBehaviour
 {
 
     private DataUser user = null;
+    private DataValidation dataObjects = null;
 
     public static UserInstance Instance = null;
 
@@ -19,6 +20,19 @@ public class UserInstance : MonoBehaviour
         set
         {
             user = value;
+        }
+    }
+
+    public DataValidation DataObjects
+    {
+        get
+        {
+            return dataObjects;
+        }
+
+        set
+        {
+            dataObjects = value;
         }
     }
 

@@ -25,7 +25,7 @@ public class PostLogin : DefaultPost
         data = new Data();
         data.login = login;
         data.password = password;
-        type = "login-crianca";
+        type = "login-responsavel";
     }
 
     [Serializable]
@@ -40,6 +40,6 @@ public class PostLogin : DefaultPost
 public class DataUser
 {
     public int id;
-    public string name;
+    public string nome;
     public string email;
 }

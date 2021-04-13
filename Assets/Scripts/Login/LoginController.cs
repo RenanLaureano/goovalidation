@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,13 +28,18 @@ public class LoginController : MonoBehaviour
         if(response == null)
         {
             textError.text = "Erro de conexão!";
-        } else
+        }
+        else
         {
             if (response.code == 1)
             {
                 PlayerPrefs.SetString("Login", inputUsuario.text);
                 PlayerPrefs.SetString("Password", inputSenha.text);
                 UserInstance.Instance.User = JsonUtility.FromJson<DataUser>(response.data);
+
+                string dataAsJson = File.ReadAllText(Application.persistentDataPath + "/staticdatavalidation.json");
+                UserInstance.Instance.DataObjects = JsonUtility.FromJson<DataValidation>(dataAsJson);
+
                 UnityEngine.SceneManagement.SceneManager.LoadScene("main");
                 Debug.Log(response.data);
             }
